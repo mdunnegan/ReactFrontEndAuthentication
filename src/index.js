@@ -10,7 +10,8 @@ import Welcome from './components/welcome';
 import Signin from './components/auth/signin';
 import Signup from './components/auth/signup';
 import Signout from './components/auth/signout';
-import Feature from './components/feature';
+import Create from './components/create';
+import Music from './components/music';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
 
@@ -35,7 +36,8 @@ ReactDOM.render(
     		<Route path='signin' component={Signin} />
     		<Route path='signup' component={Signup} />
     		<Route path='signout' component={Signout} />
-    		<Route path='feature' component={RequireAuth(Feature)} />
+    		<Route path='create' component={RequireAuth(Create)} />
+        <Route path='music' component={RequireAuth(Music)} />
     	</Route>
     </Router>
   </Provider>

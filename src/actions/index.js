@@ -27,8 +27,7 @@ export function signinUser({email, password}) {
 				// - save jwt token to local storage
 				localStorage.setItem('token', response.data.token);
 
-				// - redirect to '/feature'
-				browserHistory.push('/feature');
+				browserHistory.push('/create');
 			})
 			.catch(() => {
 				// if request is bad show an error to the user
@@ -47,7 +46,7 @@ export function signupUser({email, password}) {
 			.then(response => {
 				dispatch({ type: AUTH_USER });
 				localStorage.setItem('token', response.data.token);
-				browserHistory.push('/feature');
+				browserHistory.push('/create');
 			})
 			.catch((response) => {
 				dispatch(authError('Yeah, we dont know'));
