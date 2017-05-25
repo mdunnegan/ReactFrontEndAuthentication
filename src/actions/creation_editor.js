@@ -1,3 +1,7 @@
+import {
+  TOGGLE_NOTE
+} from './types';
+
 export function toggleNote(row, column) {
   return {
     type: TOGGLE_NOTE,
