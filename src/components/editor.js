@@ -16,9 +16,11 @@ export default class Editor extends Component {
     this.stopPlaying();
   }
 
-  attemptAddBar(barSize) {
+  addBar() {
     if (this.props.addBar) {
-      this.props.addBar(barSize);
+      return(
+        <button className='btn btn-primary' onClick={this.props.addBar.bind(this, 16)}>Add Bar</button>
+      );
     }
   }
 
@@ -39,7 +41,7 @@ export default class Editor extends Component {
               type='checkbox'
               checked={ this.props.editor.noteRows[rowIdx][colIdx] }
               onChange={ () => {
-                that.attemptToggleNote(rowIdx, colIdx)
+                that.toggleNote(rowIdx, colIdx)
               }}
             />
           </td>
@@ -48,7 +50,7 @@ export default class Editor extends Component {
     );
   }
 
-  attemptToggleNote(rowIdx, colIdx) {
+  toggleNote(rowIdx, colIdx) {
     if (this.props.toggleNote){
       this.props.toggleNote(rowIdx, colIdx);
     }
@@ -90,7 +92,7 @@ export default class Editor extends Component {
         </table>
         <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
         <button className='btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
-        <button className='btn btn-primary' onClick={this.attemptAddBar.bind(this, 16)}>Add Bar</button>
+        {this.addBar()}
       </div>
     );
   }
