@@ -16,6 +16,12 @@ export default class Editor extends Component {
     this.stopPlaying();
   }
 
+  attemptAddBar(barSize) {
+    if (this.props.addBar) {
+      this.props.addBar(barSize);
+    }
+  }
+
   stopPlaying() {
     if (this.state.stopPlayingTabFunction) {
       clearInterval(this.state.stopPlayingTabFunction)
@@ -84,6 +90,7 @@ export default class Editor extends Component {
         </table>
         <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
         <button className='btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
+        <button className='btn btn-primary' onClick={this.attemptAddBar.bind(this, 16)}>Add Bar</button>
       </div>
     );
   }
