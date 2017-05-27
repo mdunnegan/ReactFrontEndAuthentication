@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import Editor from './editor';
 import { toggleNote } from '../actions/creation_editor';
-import { setPlayingTab, setStopPlayingTabFunction } from '../actions/sound_actions';
+import { setPlayingTab } from '../actions/sound_actions';
 
 class Create extends Component {
 
@@ -42,7 +42,6 @@ function mapDispatchToProps(dispatch) {
   return {
     toggleNote: (row, col) => dispatch(toggleNote(row, col)),
     setPlayingTab: (tab) => dispatch(setPlayingTab(tab)),
-    setStopPlayingTabFunction: (func) => dispatch(setStopPlayingTabFunction(func)),
   }
 }
 

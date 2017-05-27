@@ -9,10 +9,3 @@ export function setPlayingTab(tab) {
     payload: { tab }
   }
 }
-
-export function setStopPlayingTabFunction(func) {
-  return {
-    type: SET_STOP_PLAYING_TAB_FUNCTION,
-    payload: { func }
-  }
-}

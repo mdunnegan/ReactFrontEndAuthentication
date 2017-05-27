@@ -8,6 +8,7 @@ export default class Editor extends Component {
       hihat: new Audio('../../sounds/hihat2.wav'),
       snare: new Audio('../../sounds/snare.wav'),
       bass: new Audio('../../sounds/bass.wav'),
+      stopPlayingTabFunction: null
     }
   }
 
@@ -20,7 +21,7 @@ export default class Editor extends Component {
           <td key={(rowIdx*16)+(colIdx*256)}>
             <input
               type='checkbox'
-              checked={ noteRow[rowIdx][colIdx] }
+              checked={ this.props.editor.noteRows[rowIdx][colIdx] }
               onChange={ () => {
                 that.attemptToggleNote(rowIdx, colIdx)
               }}
@@ -60,7 +61,7 @@ export default class Editor extends Component {
       column = playColumn(column, measureLength);
     }, 100);
 
-    this.props.setStopPlayingTabFunction(stopPlayingTabFunction);
+    this.setState({setStopPlayingTabFunction: stopPlayingTabFunction});
   }
 
   render() {
@@ -73,7 +74,9 @@ export default class Editor extends Component {
         </table>
         <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
         <button className='btn btn-primary' onClick={() => { 
-          if (this.props.setStopPlayingTabFunction) this.props.setStopPlayingTabFunction() 
+          if (this.state.setStopPlayingTabFunction) {
+            clearInterval(this.state.setStopPlayingTabFunction)
+          }
         }}>Stop</button>
       </div>
     );
