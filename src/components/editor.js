@@ -12,6 +12,16 @@ export default class Editor extends Component {
     }
   }
 
+  componentWillUnmount() {
+    this.stopPlaying();
+  }
+
+  stopPlaying() {
+    if (this.state.stopPlayingTabFunction) {
+      clearInterval(this.state.stopPlayingTabFunction)
+    }
+  }
+
   renderRow(noteRow, rowIdx) {
     const that = this;
     return (
@@ -61,7 +71,7 @@ export default class Editor extends Component {
       column = playColumn(column, measureLength);
     }, 100);
 
-    this.setState({setStopPlayingTabFunction: stopPlayingTabFunction});
+    this.setState({stopPlayingTabFunction: stopPlayingTabFunction});
   }
 
   render() {
@@ -73,11 +83,7 @@ export default class Editor extends Component {
           </tbody>
         </table>
         <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
-        <button className='btn btn-primary' onClick={() => { 
-          if (this.state.setStopPlayingTabFunction) {
-            clearInterval(this.state.setStopPlayingTabFunction)
-          }
-        }}>Stop</button>
+        <button className='btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
       </div>
     );
   }
