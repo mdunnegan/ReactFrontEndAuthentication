@@ -23,8 +23,7 @@ class Create extends Component {
                 toggleNote={this.props.toggleNote}
                 toggleLoop={this.props.toggleLoop}
                 updateBpm={this.props.updateBpm} 
-                setPlayingTab={this.props.setPlayingTab}
-                setStopPlayingTabFunction={this.props.setStopPlayingTabFunction} />
+                setPlayingTab={this.props.setPlayingTab} />
         {this.saveButton()}
       </div>
     );
