@@ -79,15 +79,17 @@ export default class Editor extends Component {
     let that = this;
     this.props.setPlayingTab(this.props.editor);
 
+    const { hihat, snare, bass } = this.state;
+
     const playColumn = function(column, measureLength){
       if (that.props.editor.noteRows[0][column]){
-        that.state.hihat.play();
+        hihat.play();
       }
       if (that.props.editor.noteRows[1][column]){
-        that.state.snare.play();
+        snare.play();
       }
       if (that.props.editor.noteRows[2][column]){
-        that.state.bass.play();
+        bass.play();
       }
       return (column+1) % measureLength;
     }
