@@ -16,6 +16,21 @@ export default class Editor extends Component {
     this.stopPlaying();
   }
 
+  renderBpm() {
+    return (
+      <div>
+        <input type='text' value={this.props.editor.bpm} onChange={(e) => this.updateBpm(e.target.value)} />
+      </div>
+    );
+  }
+
+  updateBpm(newBpm) {
+    this.stopPlaying();
+    if (this.props.updateBpm) {
+      this.props.updateBpm(newBpm);
+    }
+  }
+
   renderLabels() {
     const { measureLength, subdivisionQuantifier, numBars } = this.props.editor;
     const numNotes = measureLength * subdivisionQuantifier * numBars;
@@ -95,10 +110,13 @@ export default class Editor extends Component {
     }
 
     let column = 0;
+    let bpm = this.props.editor.bpm;
+    let interval = (1/(bpm/60))*1000/4;
+
     let stopPlayingTabFunction = setInterval(function(){
       const measureLength = that.props.editor.noteRows[0].length;
       column = playColumn(column, measureLength);
-    }, 100);
+    }, interval);
 
     this.setState({stopPlayingTabFunction: stopPlayingTabFunction});
   }
@@ -112,6 +130,7 @@ export default class Editor extends Component {
             {this.props.editor.noteRows.map(this.renderRow.bind(this))}
           </tbody>
         </table>
+        {this.renderBpm()}
         <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
         <button className='btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
         {this.addBar()}

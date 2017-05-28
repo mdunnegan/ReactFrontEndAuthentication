@@ -1,6 +1,7 @@
 import {
   TOGGLE_NOTE,
-  ADD_BAR
+  ADD_BAR,
+  UPDATE_BPM
 } from './types';
 
 export function toggleNote(row, column) {
@@ -16,7 +17,7 @@ export function toggleLoop() {
   };
 }
 
-export function updateBPM(bpm) {
+export function updateBpm(bpm) {
   return {
     type: UPDATE_BPM,
     payload: { bpm }
