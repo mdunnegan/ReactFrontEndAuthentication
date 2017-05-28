@@ -5,17 +5,19 @@ import {
   ADD_BAR
 } from '../actions/types';
 
+const default16thNotes = [
+  [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false],
+  [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
+  [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
+];
+
 const defaultState = {
   bpm: 100,
   loop: true,
   measureLength: 4,
   subdivisionQuantifier: 4,
   numBars: 1,
-  noteRows: [
-    [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false],
-    [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
-    [true, false, false, false, false, false, false, false, true, false, false, false, false, false, false, false]
-  ]
+  noteRows: default16thNotes
 }
 
 export default function(state = defaultState, action) {
