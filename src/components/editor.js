@@ -5,9 +5,9 @@ export default class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hihat: new Audio('../../sounds/hihat2.wav'),
-      snare: new Audio('../../sounds/snare.wav'),
-      bass: new Audio('../../sounds/bass.wav'),
+      hihat: '../../sounds/hihat2.wav',
+      snare: '../../sounds/snare.wav',
+      bass: '../../sounds/bass.wav',
       stopPlayingTabFunction: null
     }
   }
@@ -83,13 +83,13 @@ export default class Editor extends Component {
 
     const playColumn = function(column, measureLength){
       if (that.props.editor.noteRows[0][column]){
-        hihat.play();
+        (new Audio(hihat)).play();
       }
       if (that.props.editor.noteRows[1][column]){
-        snare.play();
+        (new Audio(snare)).play();
       }
       if (that.props.editor.noteRows[2][column]){
-        bass.play();
+        (new Audio(bass)).play();
       }
       return (column+1) % measureLength;
     }
