@@ -8,6 +8,9 @@ import {
 const defaultState = {
   bpm: 100,
   loop: true,
+  measureLength: 4,
+  subdivisionQuantifier: 4,
+  numBars: 1,
   noteRows: [
     [true, false, true, false, true, false, true, false, true, false, true, false, true, false, true, false],
     [false, false, false, false, true, false, false, false, false, false, false, false, true, false, false, false],
@@ -56,6 +59,7 @@ export default function(state = defaultState, action) {
 
       return {
         ...state,
+        numBars: state.numBars+1,
         noteRows: state.noteRows.map((row, i) => {
           return [...state.noteRows[i], ...newBar];
         })

@@ -16,6 +16,25 @@ export default class Editor extends Component {
     this.stopPlaying();
   }
 
+  renderLabels() {
+    const { measureLength, subdivisionQuantifier, numBars } = this.props.editor;
+    const numNotes = measureLength * subdivisionQuantifier * numBars;
+    let labels = [];
+
+    for (let i = 0; i < numNotes; i++) {
+      if (i % measureLength == 0) {
+        const labelVal = i/measureLength+1;
+        labels.push(<td key={i}>{labelVal}</td>);
+      } else if (i % measureLength == measureLength/2) {
+        const labelVal = "+";
+        labels.push(<td key={i}>{labelVal}</td>);
+      } else {
+        labels.push(<td key={i}></td>);
+      }
+    }
+    return <tr>{labels}</tr>;
+  }
+
   addBar() {
     if (this.props.addBar) {
       return(
@@ -87,6 +106,7 @@ export default class Editor extends Component {
       <div className='editor'>
         <table>
           <tbody>
+            {this.renderLabels()}
             {this.props.editor.noteRows.map(this.renderRow.bind(this))}
           </tbody>
         </table>
