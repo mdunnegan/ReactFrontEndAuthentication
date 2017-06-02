@@ -26,6 +26,7 @@ export function signinUser({email, password}) {
 				dispatch({ type: AUTH_USER, payload: { email } });
 				// - save jwt token to local storage
 				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('email', email);
 
 				browserHistory.push('/create');
 			})
@@ -46,6 +47,7 @@ export function signupUser({email, password}) {
 			.then(response => {
 				dispatch({ type: AUTH_USER, payload: { email } });
 				localStorage.setItem('token', response.data.token);
+				localStorage.setItem('email', email);
 				browserHistory.push('/create');
 			})
 			.catch((response) => {

@@ -1,3 +1,6 @@
+import { browserHistory } from 'react-router';
+import axios from 'axios';
+import { ROOT_URL } from './index';
 import {
   TOGGLE_NOTE,
   ADD_BAR,
@@ -28,5 +31,18 @@ export function addBar(barSize) {
   return {
     type: ADD_BAR,
     payload: { barSize }
+  }
+}
+
+export function save(tab, email) {
+  const { noteRows } = tab;
+
+  return function(dispatch) {
+    axios.post(ROOT_URL + '/create', { noteRows: noteRows, email: email })
+      .then(response => {
+        browserHistory.push('/music');
+      }, function() {
+        alert("Something went wrong");
+      });
   }
 }
