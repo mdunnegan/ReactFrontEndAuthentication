@@ -59,8 +59,8 @@ export default class Editor extends Component {
   }
 
   stopPlaying() {
-    if (this.state.stopPlayingTabFunction) {
-      clearInterval(this.state.stopPlayingTabFunction)
+    if (this.props.stopPlayingTabFunctionHandle) {
+      clearInterval(this.props.stopPlayingTabFunctionHandle);
     }
   }
 
@@ -91,11 +91,12 @@ export default class Editor extends Component {
   }
 
   play() {
-    let that = this;
+    this.stopPlaying();
     this.props.setPlayingTab(this.props.editor);
 
     const { hihat, snare, bass } = this.state;
 
+    let that = this;
     const playColumn = function(column, measureLength){
       if (that.props.editor.noteRows[0][column]){
         (new Audio(hihat)).play();
@@ -113,12 +114,12 @@ export default class Editor extends Component {
     let bpm = this.props.editor.bpm;
     let interval = (1/(bpm/60))*1000/4;
 
-    let stopPlayingTabFunction = setInterval(function(){
+    let stopPlayingTabFunctionHandle = setInterval(function(){
       const measureLength = that.props.editor.noteRows[0].length;
       column = playColumn(column, measureLength);
     }, interval);
 
-    this.setState({stopPlayingTabFunction: stopPlayingTabFunction});
+    this.props.setStopPlayingTabFunctionHandle(stopPlayingTabFunctionHandle);
   }
 
   render() {
