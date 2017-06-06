@@ -16,7 +16,6 @@ class Music extends Component {
       <ul>
         {this.props.tabs.map((tab, i) =>
           <Editor key={i} 
-              updateBpm={this.props.updateBpm} 
               editor={tab}
               setPlayingTab={this.props.setPlayingTab} 
               setStopPlayingTabFunctionHandle={this.props.setStopPlayingTabFunctionHandle} 
@@ -39,7 +38,7 @@ function mapDispatchToProps(dispatch) {
     updateBpm: (bpm) => dispatch(updateBpm(bpm)),
     setPlayingTab: (tab) => dispatch(setPlayingTab(tab)),
     setStopPlayingTabFunctionHandle: (handle) => dispatch(setStopPlayingTabFunctionHandle(handle)),
-    fetchTabs: () => dispatch(fetchTabs())
+    fetchTabs: (email) => dispatch(fetchTabs(email))
   }
 }
 

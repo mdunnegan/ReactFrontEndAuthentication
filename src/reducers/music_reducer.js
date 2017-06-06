@@ -8,7 +8,7 @@ export default function(state = [], action) {
       return action.payload.map(payloadObject => {
         return {
           noteRows: payloadObject.noteRows,
-          bpm: 90
+          bpm: payloadObject.bpm
         }
       });
   }

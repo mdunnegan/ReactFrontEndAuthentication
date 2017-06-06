@@ -35,10 +35,9 @@ export function addBar(barSize) {
 }
 
 export function save(tab, email) {
-  const { noteRows } = tab;
-
+  const { noteRows, bpm } = tab;
   return function(dispatch) {
-    axios.post(ROOT_URL + '/create', { noteRows: noteRows, email: email })
+    axios.post(ROOT_URL + '/create', { noteRows, bpm, email })
       .then(response => {
         browserHistory.push('/music');
       }, function() {
