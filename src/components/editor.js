@@ -18,9 +18,7 @@ export default class Editor extends Component {
 
   renderBpm() {
     return (
-      <div>
-        <input type='text' value={this.props.editor.bpm} onChange={(e) => this.updateBpm(e.target.value)} />
-      </div>
+      <input type='text' value={this.props.editor.bpm} onChange={(e) => this.updateBpm(e.target.value)} />
     );
   }
 
@@ -39,21 +37,22 @@ export default class Editor extends Component {
     for (let i = 0; i < numNotes; i++) {
       if (i % measureLength == 0) {
         const labelVal = i/measureLength+1;
-        labels.push(<td key={i}>{labelVal}</td>);
+        labels.push(<span key={i}>{labelVal}</span>);
       } else if (i % measureLength == measureLength/2) {
         const labelVal = "+";
-        labels.push(<td key={i}>{labelVal}</td>);
+        labels.push(<span key={i}>{labelVal}</span>);
       } else {
-        labels.push(<td key={i}></td>);
+        labels.push(<span key={i}></span>);
       }
     }
-    return <tr>{labels}</tr>;
+    return <div>{labels}</div>;
   }
 
   addBar() {
     if (this.props.addBar) {
       return(
-        <button className='btn btn-primary' onClick={this.props.addBar.bind(this, 16)}>Add Bar</button>
+        <button className='controls-bar__add-bar-btn btn btn-primary' 
+            onClick={this.props.addBar.bind(this, 16)}>Add Bar</button>
       );
     }
   }
@@ -67,20 +66,18 @@ export default class Editor extends Component {
   renderRow(noteRow, rowIdx) {
     const that = this;
     return (
-      <tr className='note-row' key={rowIdx}>
+      <div className='editor__note-row' key={rowIdx}>
         {noteRow.map((note, colIdx) =>
-
-          <td key={(rowIdx*16)+(colIdx*256)}>
-            <input
-              type='checkbox'
-              checked={ this.props.editor.noteRows[rowIdx][colIdx] }
-              onChange={ () => {
-                that.toggleNote(rowIdx, colIdx)
-              }}
-            />
-          </td>
+          <input
+            key={(rowIdx*16)+(colIdx*256)}
+            type='checkbox'
+            checked={ this.props.editor.noteRows[rowIdx][colIdx] }
+            onChange={ () => {
+              that.toggleNote(rowIdx, colIdx)
+            }}
+          />
         )}
-      </tr>
+      </div>
     );
   }
 
@@ -125,16 +122,15 @@ export default class Editor extends Component {
   render() {
     return (
       <div className='editor'>
-        <table>
-          <tbody>
-            {this.renderLabels()}
-            {this.props.editor.noteRows.map(this.renderRow.bind(this))}
-          </tbody>
-        </table>
-        {this.renderBpm()}
-        <button className='btn btn-primary' onClick={this.play.bind(this)}>Play</button>
-        <button className='btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
-        {this.addBar()}
+        <div className='editor__notes'>
+          {this.props.editor.noteRows.map(this.renderRow.bind(this))}
+        </div>
+        <div className='editor__controls-bar'>
+          <button className='editor__play-btn btn btn-primary' onClick={this.play.bind(this)}>Play</button>
+          <button className='editor__stop-btn btn btn-primary' onClick={this.stopPlaying.bind(this)}>Stop</button>
+          <input className='editor__update-bpm-input' type='text' value={this.props.editor.bpm} 
+              onChange={(e) => this.updateBpm(e.target.value)} />
+        </div>
       </div>
     );
   }

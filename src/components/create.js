@@ -12,7 +12,10 @@ class Create extends Component {
 
   saveButton() {
     return (
-      <button className='btn' onClick={this.save.bind(this)}>Save</button>
+      <div className="create__save-button"> 
+        <button className='btn btn-primary' 
+          onClick={this.save.bind(this)}>Save</button>
+      </div>
     );
   }
 

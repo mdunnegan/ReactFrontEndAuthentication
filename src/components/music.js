@@ -13,7 +13,7 @@ class Music extends Component {
 
   render() {
     return (
-      <ul>
+      <div className='music'>
         {this.props.tabs.map((tab, i) =>
           <Editor key={i} 
               editor={tab}
@@ -21,7 +21,7 @@ class Music extends Component {
               setStopPlayingTabFunctionHandle={this.props.setStopPlayingTabFunctionHandle} 
               stopPlayingTabFunctionHandle={this.props.stopPlayingTabFunctionHandle} /> 
         )}
-      </ul>
+      </div>
     );
   }
 }
