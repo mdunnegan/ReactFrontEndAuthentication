@@ -8,7 +8,7 @@ import {
 	FETCH_MESSAGE
 } from './types';
 
-export const ROOT_URL = "http://localhost:3090";
+export const ROOT_URL = JSON.stringify("https://dry-thicket-16915.herokuapp.com");
 
 // always returns an object!
 // because we installed redux-thunk, a function is now a valid return value

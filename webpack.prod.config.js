@@ -1,7 +1,7 @@
 const path = require('path')  
 const webpack = require('webpack')
 
-export default {  
+module.exports = {  
   devtool: 'source-map',
 
   entry: [
@@ -14,12 +14,11 @@ export default {
     filename: 'bundle.js'
   },
   plugins: [
-    new webpack.optimize.DedupePlugin(),
     // uglification and minification can happen with the webpack -p flag
     new webpack.DefinePlugin({
       'process.env': {
         'NODE_ENV': JSON.stringify('production'),
-        'ROOT_URL': 'https://dry-thicket-16915.herokuapp.com/'
+        'ROOT_URL': JSON.stringify('https://dry-thicket-16915.herokuapp.com/')
       }
     })
   ],
@@ -27,7 +26,7 @@ export default {
   module: {
     loaders: [
       { 
-        test: /\.js?$/,
+        test: /\.jsx?$/,
         loader: 'babel-loader',
         exclude: /node_modules/,
       },
