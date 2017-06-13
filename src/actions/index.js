@@ -8,7 +8,7 @@ import {
 	FETCH_MESSAGE
 } from './types';
 
-export const ROOT_URL = 'http://localhost:3090';
+export const ROOT_URL = "http://localhost:3090";
 
 // always returns an object!
 // because we installed redux-thunk, a function is now a valid return value

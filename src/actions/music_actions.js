@@ -4,8 +4,6 @@ import { ROOT_URL } from './index';
 
 export function fetchTabs(email) {
 
-
-
   return function(dispatch) {
     axios.get(ROOT_URL + '/music', { params: { email: email } })
       .then(response => {
