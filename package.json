@@ -37,6 +37,7 @@
     "redux": "^3.5.2",
     "redux-form": "^5.3.6",
     "redux-thunk": "^2.1.0",
+    "rimraf": "^2.5.2",
     "serve-favicon": "^2.3.0"
   },
   "devDependencies": {
