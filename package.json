@@ -16,8 +16,7 @@
     "remove-public": "rm -rf ./public",
     "build:html": "babel-node tools/buildHtml.js",
     "heroku-prebuild": "npm run clean-public && npm run build:html",
-    "build": "babel-node tools/build.js",
-    "heroku-postbuild": "babel-node tools/publicServer.js"
+    "build": "babel-node tools/build.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
