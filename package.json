@@ -14,7 +14,8 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm-run-all clean-public build:html",
     "build": "babel-node tools/build.js",
-    "postbuild": "babel-node tools/publicServer.js"
+    "postbuild": "babel-node tools/publicServer.js",
+    "postinstall": "npm run build"
   },
   "dependencies": {
     "axios": "^0.16.2",
