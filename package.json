@@ -3,6 +3,9 @@
   "version": "1.0.0",
   "description": "simple Redux sample app",
   "main": "index.js",
+  "engines": {
+    "node": "4.2.1"
+  },
   "scripts": {
     "test": "test",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
