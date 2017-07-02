@@ -6,7 +6,7 @@ class Welcome extends Component {
     if (this.props.authenticated) {
       return <div>Thanks for being a part of this experiment!</div>
     } else {
-      return <div>Welcome to Drum Hub! Log in or create an account to start rocking out</div>
+      return <div>Welcome to DrumKernel! Log in or create an account to start making music</div>
     }
   }
 }

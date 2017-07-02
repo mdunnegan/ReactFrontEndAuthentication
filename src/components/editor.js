@@ -5,9 +5,13 @@ export default class Editor extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      hihat: '../../sounds/hihat2.wav',
-      snare: '../../sounds/snare.wav',
-      bass: '../../sounds/bass.wav',
+
+      // These are different in DEV and PROD
+      // I counldn't get webpack's DefinePlugin to work, though
+      // So we're stuck manually changing it for now
+      hihat: './hihat2.wav', 
+      snare: './snare.wav',
+      bass: './bass.wav',
       stopPlayingTabFunction: null
     }
   }

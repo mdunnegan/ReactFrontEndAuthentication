@@ -8,7 +8,7 @@ import {
 	FETCH_MESSAGE
 } from './types';
 
-export const ROOT_URL = JSON.stringify("https://dry-thicket-16915.herokuapp.com");
+export const ROOT_URL = "https://dry-thicket-16915.herokuapp.com"; // Don't JSON.stringify, it'll add localhost to the url, which is obnoxious
 
 // always returns an object!
 // because we installed redux-thunk, a function is now a valid return value
@@ -51,7 +51,7 @@ export function signupUser({email, password}) {
 				browserHistory.push('/create');
 			})
 			.catch((response) => {
-				dispatch(authError('Yeah, we dont know'));
+				dispatch(authError('There was an error on our side!'));
 			});
 	};
 }

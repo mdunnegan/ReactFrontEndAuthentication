@@ -32,7 +32,7 @@ input[type=checkbox] {
 input[type=checkbox]:after {
   padding-right: 13px;
   top: 3px;
-  font-family: 'Courier' !important;
+  font-family: "Courier" !important;
   font-style: normal;
   font-weight: normal;
   font-size: 22px;
@@ -42,7 +42,7 @@ input[type=checkbox]:after {
 }
 
 input[type=checkbox]:checked:after {
-  content: "X";
-  color: #428bca; /* originally ffa500 
-}*/
+  content: "O";
+  color: #428bca;
+}
 

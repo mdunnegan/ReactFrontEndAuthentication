@@ -14,6 +14,7 @@ import Create from './components/create';
 import Music from './components/music';
 import reducers from './reducers';
 import { AUTH_USER } from './actions/types';
+import '../style/main.css';
 
 import RequireAuth from './components/auth/requireAuth';
 
