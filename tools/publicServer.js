@@ -4,6 +4,8 @@ import open from 'open';
 import compression from 'compression';  
 import favicon from 'serve-favicon';
 
+console.log("In publicServer");
+
 /*eslint-disable no-console */
 
 const port = process.env.PORT || 3000;  
@@ -15,6 +17,8 @@ app.use(express.static('public'));
 // app.get('*', function(req, res) {  
 //   res.sendFile(path.join(__dirname, '../public/index.html'));
 // });
+
+console.log("About to listen on port " + port);
 
 app.listen(port, function(err) {  
   if (err) {
