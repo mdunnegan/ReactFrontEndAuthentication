@@ -12,10 +12,9 @@
     "clean-public": "npm run remove-public && mkdir public",
     "remove-public": "node_modules/.bin/rimraf ./public",
     "build:html": "babel-node tools/buildHtml.js",
-    "prebuild": "npm-run-all clean-public build:html",
+    "heroku-prebuild": "npm-run-all clean-public build:html",
     "build": "babel-node tools/build.js",
-    "postbuild": "babel-node tools/publicServer.js",
-    "postinstall": "npm run build"
+    "heroku-postbuild": "babel-node tools/publicServer.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
