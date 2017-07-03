@@ -18,7 +18,7 @@
     "build:html": "babel-node tools/buildHtml.js",
     "prebuild": "npm run clean-public && npm run build:html",
     "heroku-prebuild": "npm run clean-public && npm run build:html",
-    "build": "./node_modules/.bin/babel-node tools/build.js",
+    "build": "babel-node tools/build.js",
     "postbuild": "babel-node tools/publicServer.js",
     "heroku-postbuild": "babel-node tools/publicServer.js"
   },
