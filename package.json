@@ -4,7 +4,8 @@
   "description": "simple Redux sample app",
   "main": "index.js",
   "engines": {
-    "node": "4.2.1"
+    "node": "4.2.1",
+    "npm": "4.0.3"
   },
   "scripts": {
     "test": "test",
