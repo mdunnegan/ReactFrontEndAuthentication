@@ -10,17 +10,17 @@
   "scripts": {
     "test": "test",
     "dev": "webpack-dev-server --config webpack.dev.config.js",
-    "open:src": "babel-node tools/srcServer.js",
+    "open:src": ".node_modules/bin/babel-node tools/srcServer.js",
     "lint": "node_modules/.bin/esw webpack.config.* src tools",
     "lint:watch": "npm run lint -- --watch",
     "clean-public": "npm run remove-public && mkdir public",
     "remove-public": "rm -rf ./public",
-    "build:html": "babel-node tools/buildHtml.js",
+    "build:html": ".node_modules/bin/babel-node tools/buildHtml.js",
     "prebuild": "npm run clean-public && npm run build:html",
     "heroku-prebuild": "npm run clean-public && npm run build:html",
-    "build": "babel-node tools/build.js",
-    "postbuild": "babel-node tools/publicServer.js",
-    "heroku-postbuild": "babel-node tools/publicServer.js"
+    "build": ".node_modules/bin/babel-node tools/build.js",
+    "postbuild": ".node_modules/bin/babel-node tools/publicServer.js",
+    "heroku-postbuild": ".node_modules/bin/babel-node tools/publicServer.js"
   },
   "dependencies": {
     "axios": "^0.16.2",
